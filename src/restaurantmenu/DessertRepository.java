@@ -12,7 +12,7 @@ public class DessertRepository implements MenuRepository<Dessert> {
     }
 
     @Override
-    public Dessert get(int index) {
+    public Dessert get(Integer index) {
         if (index >= 0 && index < desserts.size()) {
             return desserts.get(index);
         }

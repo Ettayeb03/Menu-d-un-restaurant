@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface MenuRepository<T> {
     void ajouter(T item);
-    T get(int index);
+
+    T get(Integer index);
+
     List<T> getAll();
 }

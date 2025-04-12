@@ -12,7 +12,7 @@ public class PlatRepository implements MenuRepository<Plat> {
     }
 
     @Override
-    public Plat get(int index) {
+    public Plat get(Integer index) {
         if (index >= 0 && index < plats.size()) {
             return plats.get(index);
         }

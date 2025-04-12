@@ -12,7 +12,7 @@ public class BoissonRepository implements MenuRepository<Boisson> {
     }
 
     @Override
-    public Boisson get(int index) {
+    public Boisson get(Integer index) {
         if (index >= 0 && index < boissons.size()) {
             return boissons.get(index);
         }
