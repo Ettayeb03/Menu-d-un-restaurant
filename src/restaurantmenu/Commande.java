@@ -42,4 +42,10 @@ public class Commande {
     public List<MenuItem> getItems() {
         return new ArrayList<>(items); // Retourne une copie pour l'immutabilité
     }
+
+    public void ajouterPack(Pack pack) {
+        items.add(pack);
+        // Ajoute aussi tous les items individuels du pack si nécessaire
+        items.addAll(pack.getItems());
+    }
 }

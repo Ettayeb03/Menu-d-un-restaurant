@@ -9,6 +9,7 @@ public class Menu {
     private final PlatRepository platRepository = new PlatRepository();
     private final BoissonRepository boissonRepository = new BoissonRepository();
     private final DessertRepository dessertRepository = new DessertRepository();
+    private final PackRepository packRepository = new PackRepository();
     private final Scanner scanner = new Scanner(System.in);
 
     public void ajouterPlat(Plat plat) {
@@ -21,6 +22,26 @@ public class Menu {
 
     public void ajouterDessert(Dessert dessert) {
         dessertRepository.ajouter(dessert);
+    }
+
+    public void ajouterPack(Pack pack) {
+        packRepository.ajouter(pack);
+    }
+
+    public void initialiserPacks() {
+        List<MenuItem> itemsPack1 = List.of(
+                platRepository.get(0),
+                boissonRepository.get(0),
+                dessertRepository.get(0)
+        );
+        ajouterPack(new PackNormal("Pack Découverte", "Notre meilleure vente", itemsPack1));
+
+        List<MenuItem> itemsEnfant = List.of(
+                platRepository.get(1),
+                boissonRepository.get(1),
+                dessertRepository.get(1)
+        );
+        ajouterPack(new MenuEnfant("Menu Happy Kids", "Pour les petits gourmands", itemsEnfant, "Figurine surprise"));
     }
 
     public void choisirItems() {
@@ -69,13 +90,14 @@ public class Menu {
     }
 
     private void ajouterArticlesMenu(Commande commande) {
-        System.out.println("\nQue voulez-vous commander ? 1.Plats, 2.Boissons, 3.Desserts");
-        int categorie = lireChoix(3);
+        System.out.println("\nQue voulez-vous commander ? 1.Plats, 2.Boissons, 3.Desserts, 4.Packs");
+        int categorie = lireChoix(4);
 
         switch (categorie) {
             case 1 -> processCategory(platRepository.getAll(), "plats", commande);
             case 2 -> processCategory(boissonRepository.getAll(), "boissons", commande);
             case 3 -> processCategory(dessertRepository.getAll(), "desserts", commande);
+            case 4 -> processCategory(packRepository.getAll(), "packs", commande);
         }
     }
 
@@ -114,7 +136,9 @@ public class Menu {
                 case 1 -> modifierCommande();
                 case 2 -> supprimerCommande();
                 case 3 -> afficherCommandes();
-                case 4 -> { return; }
+                case 4 -> {
+                    return;
+                }
             }
         }
     }
@@ -146,7 +170,9 @@ public class Menu {
             switch (choix) {
                 case 1 -> ajouterArticle(commande);
                 case 2 -> retirerArticle(commande);
-                case 3 -> { return; }
+                case 3 -> {
+                    return;
+                }
             }
         }
     }
@@ -156,14 +182,16 @@ public class Menu {
         System.out.println("1. Plats");
         System.out.println("2. Boissons");
         System.out.println("3. Desserts");
+        System.out.println("4. Packs");
         System.out.print("Choix: ");
 
-        int choix = lireChoix(3);
+        int choix = lireChoix(4);
 
         List<? extends MenuItem> items = switch (choix) {
             case 1 -> platRepository.getAll();
             case 2 -> boissonRepository.getAll();
             case 3 -> dessertRepository.getAll();
+            case 4 -> packRepository.getAll();
             default -> List.of();
         };
 
