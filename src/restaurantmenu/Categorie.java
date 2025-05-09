@@ -1,6 +1,6 @@
 package restaurantmenu;
 
-public enum Categorie {
+public enum Categorie { //pour standardiser les catégories.
     PLAT("Plat principal"),
     BOISSON("Boisson"),
     DESSERT("Dessert");
