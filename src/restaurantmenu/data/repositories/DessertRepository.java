@@ -1,5 +1,9 @@
-package restaurantmenu ;
+package restaurantmenu.data.repositories;
 
+import restaurantmenu.core.interfaces.MenuRepository;
+import restaurantmenu.core.model.Dessert;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +25,6 @@ public class DessertRepository implements MenuRepository<Dessert> {
 
     @Override
     public List<Dessert> getAll() {
-        return desserts;
+        return new ArrayList<>(desserts);
     }
 }

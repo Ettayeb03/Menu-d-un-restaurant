@@ -1,5 +1,7 @@
-package restaurantmenu;
+package restaurantmenu.data.repositories;
 
+import restaurantmenu.core.interfaces.MenuRepository;
+import restaurantmenu.core.model.Boisson;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +15,11 @@ public class BoissonRepository implements MenuRepository<Boisson> {
 
     @Override
     public Boisson get(Integer index) {
-        if (index >= 0 && index < boissons.size()) {
-            return boissons.get(index);
-        }
-        return null;
+        return (index >= 0 && index < boissons.size()) ? boissons.get(index) : null;
     }
 
     @Override
     public List<Boisson> getAll() {
-        return boissons;
+        return new ArrayList<>(boissons);
     }
 }

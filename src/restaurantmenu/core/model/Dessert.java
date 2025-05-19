@@ -1,4 +1,6 @@
-package restaurantmenu;
+package restaurantmenu.core.model;
+
+import restaurantmenu.core.enums.Categorie;
 
 public class Dessert extends AbstractMenuItem {
     public Dessert(String nom, String description, double prix) {

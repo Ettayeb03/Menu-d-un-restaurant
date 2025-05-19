@@ -1,5 +1,7 @@
-package restaurantmenu;
+package restaurantmenu.data.repositories;
 
+import restaurantmenu.core.interfaces.MenuRepository;
+import restaurantmenu.core.model.Plat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +15,11 @@ public class PlatRepository implements MenuRepository<Plat> {
 
     @Override
     public Plat get(Integer index) {
-        if (index >= 0 && index < plats.size()) {
-            return plats.get(index);
-        }
-        return null;
+        return (index >= 0 && index < plats.size()) ? plats.get(index) : null;
     }
 
     @Override
     public List<Plat> getAll() {
-        return plats;
+        return new ArrayList<>(plats);
     }
 }
